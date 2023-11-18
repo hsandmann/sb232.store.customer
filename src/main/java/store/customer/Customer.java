@@ -1,4 +1,4 @@
-package store.product;
+package store.customer;
 
 import java.util.Date;
 
