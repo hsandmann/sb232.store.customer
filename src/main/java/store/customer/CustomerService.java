@@ -48,6 +48,16 @@ public class CustomerService {
         }
     }
 
+    public Customer findBy(String email, String password) {
+        try {
+            email = email.trim();
+            final String hash = calculateHash(password.trim());
+            return customerRepository.findFirstByEmailHash(email, hash).map(CustomerModel::to).orElse(null);
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private String calculateHash(String text) throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         byte[] hash = digest.digest(text.getBytes(StandardCharsets.UTF_8));

@@ -9,7 +9,7 @@ public final class CustomerParser {
 
     public static Customer to(CustomertIn in) {
         try { 
-            return Customer.builder()
+            return in == null ? null : Customer.builder()
                 .name(in.name())
                 .birthdate(sdf.parse(in.birthdate()))
                 .cpf(in.cpf())
@@ -22,7 +22,7 @@ public final class CustomerParser {
     }
 
     public static CustomerOut to(Customer o) {
-        return new CustomerOut(
+        return o == null ? null : new CustomerOut(
             o.id(),
             o.name(),
             o.birthdate(),
