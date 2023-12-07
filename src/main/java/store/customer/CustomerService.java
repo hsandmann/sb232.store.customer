@@ -24,7 +24,8 @@ public class CustomerService {
     }
 
     public Customer find(String id) {
-        return customerRepository.findById(id).orElse(null).to();
+        CustomerModel customer = customerRepository.findById(id).orElse(null);
+        return customer == null ? null : customer.to();
     }
 
     public void delete(String id) {
