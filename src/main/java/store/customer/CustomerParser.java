@@ -25,7 +25,7 @@ public final class CustomerParser {
         return o == null ? null : new CustomerOut(
             o.id(),
             o.name(),
-            o.birthdate(),
+            sdf.format(o.birthdate()),
             o.cpf(),
             o.email()
         );
